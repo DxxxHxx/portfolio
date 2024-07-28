@@ -16,3 +16,9 @@ export interface ILinkList {
   readonly alt: string;
   readonly text: string;
 }
+
+export interface ISkillList {
+  id: number;
+  name: string;
+  value: number;
+}

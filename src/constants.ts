@@ -1,4 +1,4 @@
-import { IInfoList, ILinkList, IMenuList } from "./types/interface";
+import { IInfoList, ILinkList, IMenuList, ISkillList } from "./types/interface";
 import githubLogo from "./assets/github-mark.png";
 import blogLogo from "./assets/blogLogo.png";
 
@@ -32,4 +32,18 @@ export const linkList: ILinkList[] = [
     alt: "blog logo",
     text: "Blog",
   },
+];
+
+export const skillList: ISkillList[] = [
+  { id: 1, name: "HTML", value: 80 },
+  { id: 2, name: "CSS", value: 80 },
+  { id: 3, name: "JavaScript", value: 60 },
+  { id: 4, name: "React", value: 70 },
+  { id: 5, name: "TypeScript", value: 60 },
+  { id: 6, name: "Styled-Components", value: 60 },
+  { id: 7, name: "Tailwind-Css", value: 70 },
+  { id: 8, name: "Recoil", value: 60 },
+  { id: 9, name: "Zustand", value: 70 },
+  { id: 10, name: "React-Query", value: 75 },
+  { id: 11, name: "Github", value: 100 },
 ];
