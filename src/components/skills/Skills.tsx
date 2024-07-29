@@ -6,7 +6,7 @@ import { Container, SkillItemsContainer } from "./skillStyle";
 export default function Skills() {
   return (
     <Container id="Skills">
-      <Title>Skills</Title>
+      <Title>SKILLS</Title>
       <SkillItemsContainer>
         {skillList.map((skill) => (
           <SkillItems key={skill.id} {...skill} />

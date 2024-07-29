@@ -24,9 +24,9 @@ export const AboutContainer = styled(motion.div)`
   padding: 15px;
 
   @media screen and (min-width: 768px) {
-    max-width: 630px;
+    max-width: 950px;
     flex-direction: row;
-    padding: 30px;
+    padding: 20px 20px 50px 20px;
   }
 `;
 
@@ -42,9 +42,8 @@ export const Title = styled.h1`
 
 export const AboutContent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-start;
-  gap: 50px;
   margin-top: 30px;
 `;
 
@@ -58,7 +57,8 @@ export const InfoItem = styled.li`
   margin-bottom: 15px;
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: 20px;
+    padding: 12px 0px;
   }
 `;
 
@@ -70,9 +70,9 @@ export const LinkContainer = styled.div`
 
 export const ProfileImg = styled.img`
   display: none;
-  width: 200px;
-  height: 100%;
-  border-radius: 30%;
+  width: 300px;
+  height: 350px;
+  border-radius: 50%;
   @media screen and (min-width: 768px) {
     display: block;
   }

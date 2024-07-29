@@ -44,7 +44,7 @@ export default function About() {
         <Title>ABOUT</Title>
         <AboutContent>
           <ProfileImg
-            src="https://pbs.twimg.com/profile_images/1228368893321736193/Ov0og7E8_400x400.jpg"
+            src="https://item.kakaocdn.net/do/5c5d49e3cf96b8556201270d137a761f8f324a0b9c48f77dbce3a43bd11ce785"
             alt="profile img"
           />
 

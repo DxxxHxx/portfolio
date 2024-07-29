@@ -9,6 +9,9 @@ export const Container = styled(motion.header)`
   top: 0px;
   left: 0px;
   width: 100%;
+  z-index: 100;
+  background-color: white;
+  opacity: 0.9;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -45,6 +48,6 @@ export const MenuList = styled.ul`
   }
 `;
 
-export const MenuItem = styled.li`
+export const MenuItem = styled(motion.li)`
   cursor: pointer;
 `;
