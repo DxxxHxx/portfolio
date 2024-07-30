@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { IUseInput } from "../../types/interface";
+import { Container, Input, TextArea } from "./contactInputStyle";
 
 export default function ContactInput({
   labelText,
@@ -7,12 +7,14 @@ export default function ContactInput({
   isText = true,
   isInput = true,
   info,
+  name,
 }: {
   labelText: string;
   inputId: string;
   isText?: boolean;
   isInput?: boolean;
   info: IUseInput;
+  name: string;
 }) {
   return (
     <Container>
@@ -24,6 +26,7 @@ export default function ContactInput({
           value={info.value}
           onChange={info.onChange}
           required
+          name={name}
         />
       ) : (
         <TextArea
@@ -31,34 +34,9 @@ export default function ContactInput({
           id={inputId}
           value={info.value}
           onChange={info.onChange}
+          name={name}
         />
       )}
     </Container>
   );
 }
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-export const Input = styled.input`
-  border: none;
-  outline: none;
-  background-color: white;
-  border-radius: 20px;
-  padding: 10px 5px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  /* width: 100%; */
-`;
-export const TextArea = styled.textarea`
-  border: none;
-  outline: none;
-  background-color: white;
-  border-radius: 20px;
-  padding: 10px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  resize: none;
-  height: 200px;
-`;

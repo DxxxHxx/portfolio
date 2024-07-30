@@ -28,4 +28,5 @@ export type InputElement = HTMLInputElement | HTMLTextAreaElement;
 export interface IUseInput {
   value: string;
   onChange: (e: React.ChangeEvent<InputElement>) => void;
+  resetValue: () => void;
 }
