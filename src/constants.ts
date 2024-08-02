@@ -1,6 +1,13 @@
-import { IInfoList, ILinkList, IMenuList, ISkillList } from "./types/interface";
+import {
+  IInfoList,
+  ILinkList,
+  IMenuList,
+  IProjectList,
+  ISkillList,
+} from "./types/interface";
 import githubLogo from "./assets/github-mark.png";
 import blogLogo from "./assets/blogLogo.png";
+import todaysDiscovery from "./assets/projectThumbnail/오늘의 발견.png";
 
 export const menuList: IMenuList[] = [
   { id: 1, category: "About" },
@@ -47,4 +54,49 @@ export const skillList: ISkillList[] = [
   { id: 10, name: "Zustand", value: 70 },
   { id: 11, name: "React Query", value: 75 },
   { id: 12, name: "Github", value: 70 },
+];
+
+export const projectList: IProjectList[] = [
+  {
+    id: 1,
+    Contribution: 100,
+    links: {
+      github: "https://github.com/DxxxHxx/Today-s-discovery",
+      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+    },
+    tech: ["HTML", "CSS"],
+    title: "오늘의 발견",
+    period: "23.09.07 ~ 23.09.11",
+    previewImg: todaysDiscovery,
+    projectType: "personal",
+    desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
+  },
+  {
+    id: 2,
+    Contribution: 100,
+    links: {
+      github: "https://github.com/DxxxHxx/Today-s-discovery",
+      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+    },
+    tech: ["HTML", "CSS"],
+    title: "오늘의 발견",
+    period: "23.09.07 ~ 23.09.11",
+    previewImg: todaysDiscovery,
+    projectType: "personal",
+    desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
+  },
+  {
+    id: 3,
+    Contribution: 100,
+    links: {
+      github: "https://github.com/DxxxHxx/Today-s-discovery",
+      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+    },
+    tech: ["HTML", "CSS"],
+    title: "오늘의 발견",
+    period: "23.09.07 ~ 23.09.11",
+    previewImg: todaysDiscovery,
+    projectType: "personal",
+    desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
+  },
 ];

@@ -18,15 +18,30 @@ export interface ILinkList {
 }
 
 export interface ISkillList {
-  id: number;
-  name: string;
-  value: number;
+  readonly id: number;
+  readonly name: string;
+  readonly value: number;
 }
 
 export type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 export interface IUseInput {
-  value: string;
+  readonly value: string;
   onChange: (e: React.ChangeEvent<InputElement>) => void;
   resetValue: () => void;
+}
+
+export interface IProjectList {
+  readonly id: number;
+  readonly title: string;
+  readonly previewImg: string;
+  readonly desc: string;
+  readonly period: string;
+  readonly tech: string[];
+  readonly Contribution: number;
+  readonly projectType: string;
+  readonly links: {
+    readonly github: string;
+    readonly deploy: string;
+  };
 }
