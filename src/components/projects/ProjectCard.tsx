@@ -1,7 +1,14 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
 import { IProjectList } from "../../types/interface";
 import { useMediaQuery } from "../../util/useMediaQuery";
+import {
+  BadgeContainer,
+  Container,
+  DescContainer,
+  GoDetail,
+  TechBadge,
+  ThumbnailImg,
+  ThumbnailText,
+} from "./projectCardStyle";
 
 export default function ProjectCard(props: IProjectList) {
   const smSize = useMediaQuery("(min-width: 320px)");
@@ -17,7 +24,12 @@ export default function ProjectCard(props: IProjectList) {
           },
           whileInView: {
             x: 0,
+            y: [0, -5, 0],
             opacity: 1,
+            transition: {
+              duration: 0.5,
+              y: { repeat: Infinity, duration: 1.5 },
+            },
           },
         }
       : smSize && mdSize && !lgSize
@@ -31,6 +43,7 @@ export default function ProjectCard(props: IProjectList) {
               y: { repeat: Infinity, duration: 1.5 },
             },
             x: props.id % 2 !== 0 ? -50 : 50,
+            y: [0, -5, 0],
           },
         }
       : smSize && mdSize && lgSize
@@ -44,7 +57,7 @@ export default function ProjectCard(props: IProjectList) {
               y: { repeat: Infinity, duration: 1.5 },
             },
             x: props.id % 2 !== 0 ? -100 : 100,
-            y: [0, -10, 0],
+            y: [0, -5, 0],
           },
         }
       : undefined;
@@ -54,6 +67,7 @@ export default function ProjectCard(props: IProjectList) {
       variants={variants}
       initial={variants?.initial}
       whileInView={variants?.whileInView}
+      whileHover={{ scale: 1.1 }}
     >
       <ThumbnailImg
         src={props.previewImg}
@@ -91,80 +105,3 @@ export default function ProjectCard(props: IProjectList) {
     </Container>
   );
 }
-
-const Container = styled(motion.div)`
-  width: 300px;
-  height: 200px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 10px;
-  display: flex;
-
-  @media screen and (min-width: 768px) {
-    width: 500px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 600px;
-  }
-`;
-
-const ThumbnailImg = styled.img`
-  display: none;
-  /* border: 1px solid black; */
-  @media screen and (min-width: 768px) {
-    display: block;
-    width: 200px;
-    height: 200px;
-  }
-`;
-
-const ThumbnailText = styled.div`
-  width: 100%;
-  /* border: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  gap: 20px;
-  position: relative;
-`;
-
-const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-`;
-const TechBadge = styled.div`
-  /* border: 1px solid black; */
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 12px;
-  margin-right: 5px;
-  background-color: #f5e0e0;
-`;
-
-const DescContainer = styled.div`
-  line-height: 20px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  font-size: 14px;
-  text-wrap: wrap;
-`;
-
-const GoDetail = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 14px;
-  gap: 7px;
-
-  svg {
-    width: 25px;
-  }
-`;
