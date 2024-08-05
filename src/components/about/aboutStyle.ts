@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.section`
-  margin-top: 160px;
+  padding-top: 160px;
 `;
 
 export const DescContainer = styled(motion.div)`
@@ -10,7 +10,7 @@ export const DescContainer = styled(motion.div)`
   font-weight: 500;
   width: 60%;
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   line-height: 30px;
   margin-bottom: 50px;
 `;
