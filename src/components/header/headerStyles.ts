@@ -51,3 +51,18 @@ export const MenuList = styled.ul`
 export const MenuItem = styled(motion.li)`
   cursor: pointer;
 `;
+
+export const ItemContainer = styled.div`
+  position: relative;
+`;
+export const Dot = styled(motion.div)`
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+`;
