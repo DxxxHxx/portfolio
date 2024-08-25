@@ -100,3 +100,30 @@ export const projectList: IProjectList[] = [
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
 ];
+
+///////////////
+
+export const landingText =
+  "안녕하세요. : ) 주니어 프론트엔드 개발자 이동훈입니다.";
+
+export const staggerContainerVariants = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: [0, 5, 0],
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+      y: { delay: 1.5, repeat: Infinity, duration: 2 },
+    },
+  },
+};
+
+export const staggerItemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
