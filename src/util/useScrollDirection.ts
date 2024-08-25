@@ -1,24 +1,43 @@
 import { useState, useEffect } from "react";
+import { ScrollDirectionType } from "../types/interface";
 
-export const useScrollDirection = () => {
-  const [isScrollDown, setIsScrollDown] = useState<null | boolean>(null);
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+export function useScrollDirection() {
+  const [scrollDirection, setScrollDirection] =
+    useState<ScrollDirectionType>(null);
+  const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const direction = currentScrollPos > prevScrollPos ? true : false;
+    let lastScrollY = window.scrollY;
 
-      setIsScrollDown(direction);
-      setPrevScrollPos(currentScrollPos);
+    const updateScrollDirection = () => {
+      const scrollY = window.scrollY;
+      const direction = scrollY > lastScrollY ? "down" : "up";
+      if (
+        direction !== scrollDirection &&
+        (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
+      ) {
+        setScrollDirection(direction);
+      }
+      lastScrollY = scrollY > 0 ? scrollY : 0;
     };
-
-    window.addEventListener("scroll", handleScroll);
-
+    window.addEventListener("scroll", updateScrollDirection);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", updateScrollDirection);
     };
-  }, [prevScrollPos]);
+  }, [scrollDirection]);
 
-  return isScrollDown;
-};
+  useEffect(() => {
+    const hanndleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsTop(false);
+        return;
+      }
+      setIsTop(true);
+    };
+    window.addEventListener("scroll", hanndleScroll);
+
+    return () => window.removeEventListener("scroll", hanndleScroll);
+  }, []);
+
+  return [scrollDirection, isTop];
+}

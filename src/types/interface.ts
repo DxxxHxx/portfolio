@@ -45,3 +45,5 @@ export interface IProjectList {
     readonly deploy: string;
   };
 }
+
+export type ScrollDirectionType = "down" | "up" | null;
