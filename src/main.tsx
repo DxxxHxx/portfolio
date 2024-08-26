@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`html,
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -29,8 +32,8 @@ section {
 body {
   line-height: 1;
   font-family: "Noto Sans KR", sans-serif;
-  height: 300vh;
-  background-color: #f3f3f3;
+  /* height: 300vh; */
+  /* background-color: #f3f3f3; */
   /* padding: 0px 10px;
 
   @media screen and (min-width: 768px) {
