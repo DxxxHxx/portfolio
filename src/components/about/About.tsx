@@ -1,75 +1,96 @@
-import TypingComponent from "./TypingComponent";
-import { infoList, linkList } from "../../constants";
-import { Divdier } from "../common/divider/dividerStyle";
-import {
-  AboutContainer,
-  AboutContent,
-  Container,
-  DescContainer,
-  InfoItem,
-  LinkContainer,
-  LinkImg,
-  Links,
-  LinkText,
-  ProfileImg,
-  Title,
-} from "./aboutStyle";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <Container id="About">
-      <TypingComponent />
+    <AboutContainer id="about">
+      <TextContainer>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.7, delay: 0.5 },
+          }}
+        >
+          <p>ABOUT</p>
+          <h1>What We Do</h1>
+        </motion.div>
 
-      <DescContainer
-        whileInView={{ y: 0, opacity: 1 }}
-        initial={{ y: 100, opacity: 0 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-      >
-        <span>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam totam
-          perspiciatis non nulla vero fugiat cumque repellendus dolorum
-          veritatis impedit autem, temporibus in eum nihil magnam architecto.
-          Quos, est alias! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Totam, ipsum perferendis aspernatur architecto natus sapiente
-          nihil necessitatibus provident officia. A neque officiis obcaecati
-          nemo. Saepe reiciendis corrupti ipsum magnam molestiae?
-        </span>
-      </DescContainer>
-
-      <AboutContainer
-        whileInView={{ y: 0, opacity: 1 }}
-        initial={{ y: 100, opacity: 0 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-      >
-        <Title>ABOUT</Title>
-        <AboutContent>
-          <ProfileImg
-            src="https://item.kakaocdn.net/do/5c5d49e3cf96b8556201270d137a761f8f324a0b9c48f77dbce3a43bd11ce785"
-            alt="profile img"
-          />
-
-          <ul>
-            {infoList.map((item) => (
-              <InfoItem key={item.id}>
-                <span>{item.emoji}</span>
-                <span>{item.text}</span>
-              </InfoItem>
-            ))}
-            <Divdier marginy={15} />
-
-            <LinkContainer>
-              {linkList.map((item) => (
-                <li key={item.id}>
-                  <Links target="_blank" rel="noopener" href={item.href}>
-                    <LinkImg loading="lazy" src={item.src} alt={item.alt} />
-                    <LinkText>{item.text}</LinkText>
-                  </Links>
-                </li>
-              ))}
-            </LinkContainer>
-          </ul>
-        </AboutContent>
-      </AboutContainer>
-    </Container>
+        <p>
+          This is a space to share more about the business: who's behind it,
+          what it does and what this site has to offer. It’s an opportunity to
+          tell the story behind the business or describe a special service or
+          product it offers. You can use this section to share the company's
+          history or highlight a particular feature that sets it apart from
+          competitors.
+        </p>
+      </TextContainer>
+      <ProfileImg
+        src="https://item.kakaocdn.net/do/e74bc01f60f5ce6a015cec451ea9cc45effd194bae87d73dd00522794070855d"
+        alt="profile img"
+      />
+    </AboutContainer>
   );
 }
+
+const AboutContainer = styled.section`
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 2fr;
+  }
+`;
+
+const TextContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  div > p {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  div > h1 {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 20px;
+
+    div > p {
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    div > h1 {
+      font-size: 35px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+`;
+
+const ProfileImg = styled.img`
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  padding: 15px;
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 0px 20px 20px;
+  }
+`;
