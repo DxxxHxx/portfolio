@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface IMenuList {
   readonly id: number;
   readonly category: string;
@@ -47,3 +49,14 @@ export interface IProjectList {
 }
 
 export type ScrollDirectionType = "down" | "up" | null;
+
+export type InputChangeEventType = ChangeEvent<HTMLInputElement>;
+
+export interface IConactInput {
+  labelText: string;
+  id: string;
+  type: "text" | "email";
+  value: string;
+  name: string;
+  onChange: (e: InputChangeEventType) => void;
+}
