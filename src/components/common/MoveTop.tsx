@@ -22,7 +22,7 @@ export default function MoveTop() {
       observerOptions
     );
 
-    const $target = document.querySelector("#About")!;
+    const $target = document.querySelector("#home")!;
     observer.observe($target);
 
     return () => observer.unobserve($target);
@@ -54,24 +54,36 @@ export default function MoveTop() {
   );
 }
 
-const Container = styled.div`
+const Container = styled.button`
   position: fixed;
-  background-color: white;
-  bottom: 10px;
-  right: 10px;
-  width: 35px;
-  border: 1px solid black;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
   border-radius: 50%;
   padding: 3px;
-  cursor: pointer;
-  z-index: 100;
+  border: none;
+  z-index: 99;
+  background-color: #c3c1c1;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: black;
+    svg {
+      color: white;
+    }
   }
 
   @media screen and (min-width: 768px) {
-    right: 20px;
-    bottom: 20px;
+    right: 30px;
+    bottom: 30px;
+
+    svg {
+      width: 45px;
+      height: 45px;
+    }
   }
 `;
