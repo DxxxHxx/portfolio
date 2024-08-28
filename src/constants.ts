@@ -8,13 +8,7 @@ import {
 import githubLogo from "./assets/github-mark.png";
 import blogLogo from "./assets/blogLogo.png";
 import todaysDiscovery from "./assets/projectThumbnail/오늘의 발견.png";
-
-export const menuList: IMenuList[] = [
-  { id: 1, category: "About" },
-  { id: 2, category: "Skills" },
-  { id: 3, category: "Projects" },
-  { id: 4, category: "Contact" },
-];
+import { splitText } from "./util/splitText";
 
 export const infoList: IInfoList[] = [
   { id: 1, emoji: "🙋‍♂️", text: "이동훈" },
@@ -99,6 +93,34 @@ export const projectList: IProjectList[] = [
     projectType: "personal",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
+  {
+    id: 4,
+    Contribution: 100,
+    links: {
+      github: "https://github.com/DxxxHxx/Today-s-discovery",
+      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+    },
+    tech: ["HTML", "CSS"],
+    title: "오늘의 발견",
+    period: "23.09.07 ~ 23.09.11",
+    previewImg: todaysDiscovery,
+    projectType: "personal",
+    desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
+  },
+  {
+    id: 5,
+    Contribution: 100,
+    links: {
+      github: "https://github.com/DxxxHxx/Today-s-discovery",
+      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+    },
+    tech: ["HTML", "CSS"],
+    title: "오늘의 발견",
+    period: "23.09.07 ~ 23.09.11",
+    previewImg: todaysDiscovery,
+    projectType: "personal",
+    desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
+  },
 ];
 
 ///////////////
@@ -115,7 +137,12 @@ export const staggerContainerVariants = {
     transition: {
       delayChildren: 0.3,
       staggerChildren: 0.2,
-      y: { delay: 1.5, repeat: Infinity, duration: 2 },
+      duration: 1,
+      y: {
+        delay: splitText(landingText).length * 0.3,
+        repeat: Infinity,
+        duration: 2,
+      },
     },
   },
 };
@@ -127,3 +154,11 @@ export const staggerItemVariants = {
     opacity: 1,
   },
 };
+
+export const menuList: IMenuList[] = [
+  { id: 0, category: "Home" },
+  { id: 1, category: "About" },
+  { id: 2, category: "Skills" },
+  { id: 3, category: "Projects" },
+  { id: 4, category: "Contact" },
+];

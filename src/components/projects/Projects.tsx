@@ -1,66 +1,96 @@
-import Container from "../common/Container";
-import Title from "../common/Title";
-import { AnimatePresence } from "framer-motion";
-import { useState, MouseEvent, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { projectList } from "../../constants";
-import ProjectCard from "./ProjectCard";
-import Modal from "./Modal";
-import { ModalContainer, ProjectCardContainer } from "./projectsStyle";
+import { motion } from "framer-motion";
 
 export default function Projects() {
-  const [showModal, setShowModal] = useState(false);
-  const [modalId, setModalId] = useState<null | string>(null);
-
-  const handleCardClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setModalId(e.currentTarget.getAttribute("href"));
-
-    handleShowModal();
-  };
-
-  useEffect(() => {
-    if (!showModal) return;
-
-    const handleCloseModal = (e: globalThis.KeyboardEvent) => {
-      if (e.key === "Escape") setShowModal(false);
-      return;
-    };
-
-    window.addEventListener("keydown", (e) => handleCloseModal(e));
-
-    return window.removeEventListener("keydown", handleCloseModal);
-  }, [showModal]);
-
-  const handleShowModal = () => setShowModal((prev) => !prev);
   return (
-    <Container id="Projects">
-      <Title text="PROJECTS" />
+    <ProjectContainer id="projects">
+      <Title>
+        <h1>Projects</h1>
+        <Link to={"/projects"}>
+          <button>View all</button>
+        </Link>
+      </Title>
 
-      <ProjectCardContainer>
+      <ImgWrapper>
         {projectList.map((item) => (
-          <div key={item.id}>
-            {" "}
-            <a onClick={handleCardClick} key={item.id} href={`${item.id}`}>
-              <ProjectCard key={item.id} {...item} />
-            </a>
-            <AnimatePresence>
-              {showModal && (
-                <ModalContainer
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Modal
-                    onClick={handleShowModal}
-                    layoutId={modalId!}
-                    {...item}
-                  />
-                </ModalContainer>
-              )}
-            </AnimatePresence>
-          </div>
+          <Link to={`/projects/${item.id}`} key={item.id}>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Img src={item.previewImg} alt={`${item.title} img`} />
+              <p>
+                {item.title} {item.id}
+              </p>
+            </motion.div>
+          </Link>
         ))}
-      </ProjectCardContainer>
-    </Container>
+      </ImgWrapper>
+    </ProjectContainer>
   );
 }
+
+const ProjectContainer = styled.section`
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  h1 {
+    font-size: 25px;
+  }
+
+  button {
+    background-color: transparent;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    padding: 7px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+
+    transition: all 0.2s ease-in-out;
+  }
+`;
+
+const ImgWrapper = styled.div`
+  /* border: 1px solid white; */
+  flex: 1;
+  display: flex;
+  /* justify-content: center; */
+  overflow-x: auto;
+  align-items: center;
+  gap: 20px;
+  padding: 0px 20px;
+
+  div {
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 18px;
+  }
+`;
+const Img = styled.img`
+  width: 200px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+`;
