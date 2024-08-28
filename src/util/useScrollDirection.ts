@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ScrollDirectionType } from "../types/interface";
 
-export function useScrollDirection() {
+export function useScrollDirection(distance: number = 200) {
   const [scrollDirection, setScrollDirection] =
     useState<ScrollDirectionType>(null);
   const [isTop, setIsTop] = useState(true);
@@ -28,7 +28,7 @@ export function useScrollDirection() {
 
   useEffect(() => {
     const hanndleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > distance) {
         setIsTop(false);
         return;
       }
@@ -37,7 +37,7 @@ export function useScrollDirection() {
     window.addEventListener("scroll", hanndleScroll);
 
     return () => window.removeEventListener("scroll", hanndleScroll);
-  }, []);
+  }, [distance]);
 
-  return [scrollDirection, isTop];
+  return { scrollDirection, isTop };
 }

@@ -2,11 +2,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 import { useScrollDirection } from "../../util/useScrollDirection";
 import { useState, MouseEvent } from "react";
+import { menuList } from "../../constants";
+import { Link, useMatch } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const [direction, isTop] = useScrollDirection();
+  const { isTop, scrollDirection } = useScrollDirection();
+  const projectMatch = useMatch("/projects");
 
   const handleSidebarToggle = () => setIsOpen((prev) => !prev);
 
@@ -25,40 +27,34 @@ export default function Header() {
   return (
     <HeaderContainer
       animate={{
-        top: direction === "down" ? -100 : 0,
-        backgroundColor: isTop ? "transparent" : "white",
+        top: scrollDirection === "down" ? -100 : 0,
+        backgroundColor: isTop
+          ? "transparent"
+          : projectMatch
+          ? "black"
+          : "white",
         transition: { duration: 0.3 },
       }}
+      $isProjectPage={!!projectMatch}
     >
-      <HeaderLogo whileHover={{ scale: 1.1 }}>DxxxHxx</HeaderLogo>
+      <HeaderLogo to={"/"}>DxxxHxx</HeaderLogo>
+
       <HeaderMenu>
-        <HeaderMenuItem
-          onClick={handleNavigateSection}
-          whileHover={{ scale: 1.1 }}
-        >
-          Home
-        </HeaderMenuItem>
-        <HeaderMenuItem
-          onClick={handleNavigateSection}
-          whileHover={{ scale: 1.1 }}
-        >
-          About
-        </HeaderMenuItem>
-        <HeaderMenuItem
-          onClick={handleNavigateSection}
-          whileHover={{ scale: 1.1 }}
-        >
-          Projects
-        </HeaderMenuItem>
-        <HeaderMenuItem
-          onClick={handleNavigateSection}
-          whileHover={{ scale: 1.1 }}
-        >
-          Contact
-        </HeaderMenuItem>
+        {menuList.map((menu) => (
+          <HeaderMenuItem
+            key={menu.id}
+            onClick={handleNavigateSection}
+            whileHover={{ scale: 1.1 }}
+          >
+            {menu.category}
+          </HeaderMenuItem>
+        ))}
       </HeaderMenu>
 
-      <MobileMenuBtn onClick={handleSidebarToggle}>
+      <MobileMenuBtn
+        onClick={handleSidebarToggle}
+        $isProjectPage={!!projectMatch}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -94,30 +90,15 @@ export default function Header() {
                 d="M6 18 18 6M6 6l12 12"
               />
             </svg>
-            <MobileMenuItem
-              onClick={handleMobileMenu}
-              whileHover={{ scale: 1.1 }}
-            >
-              Home
-            </MobileMenuItem>
-            <MobileMenuItem
-              onClick={handleMobileMenu}
-              whileHover={{ scale: 1.1 }}
-            >
-              About
-            </MobileMenuItem>
-            <MobileMenuItem
-              onClick={handleMobileMenu}
-              whileHover={{ scale: 1.1 }}
-            >
-              Projects
-            </MobileMenuItem>
-            <MobileMenuItem
-              onClick={handleMobileMenu}
-              whileHover={{ scale: 1.1 }}
-            >
-              Contact
-            </MobileMenuItem>
+            {menuList.map((menu) => (
+              <MobileMenuItem
+                key={menu.id}
+                onClick={handleMobileMenu}
+                whileHover={{ scale: 1.1 }}
+              >
+                {menu.category}
+              </MobileMenuItem>
+            ))}
           </MobileMenu>
         )}
       </AnimatePresence>
@@ -125,7 +106,7 @@ export default function Header() {
   );
 }
 
-const HeaderContainer = styled(motion.header)`
+const HeaderContainer = styled(motion.header)<{ $isProjectPage: boolean }>`
   width: 100%;
   height: 90px;
   padding: 0px 20px;
@@ -135,13 +116,15 @@ const HeaderContainer = styled(motion.header)`
   align-items: center;
   justify-content: space-between;
   z-index: 999;
+  color: ${(p) => (p.$isProjectPage ? "white" : "black")};
 `;
 
-const HeaderLogo = styled(motion.h1)`
+const HeaderLogo = styled(Link)`
   font-size: 30px;
 `;
 
 const HeaderMenu = styled.ul`
+  width: fit-content;
   display: none;
   position: absolute;
   left: 0;
@@ -166,7 +149,7 @@ const HeaderMenuItem = styled(motion.li)`
   }
 `;
 
-const MobileMenuBtn = styled.button`
+const MobileMenuBtn = styled.button<{ $isProjectPage: boolean }>`
   display: block;
   border: none;
   background-color: transparent;
@@ -175,6 +158,7 @@ const MobileMenuBtn = styled.button`
   svg {
     width: 45px;
     height: 45px;
+    color: ${(p) => (p.$isProjectPage ? "white" : "black")};
   }
   @media screen and (min-width: 768px) {
     display: none;

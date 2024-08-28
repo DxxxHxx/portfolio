@@ -1,38 +1,14 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useScrollDirection } from "../../util/useScrollDirection";
 
 export default function MoveTop() {
-  const [visible, SetVisible] = useState(false);
-
-  useEffect(() => {
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries;
-
-      if (!entry.isIntersecting) {
-        SetVisible(true);
-        return;
-      }
-      SetVisible(false);
-    };
-
-    const observerOptions = { threshold: 0.5, rootMargin: "100px" };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    const $target = document.querySelector("#home")!;
-    observer.observe($target);
-
-    return () => observer.unobserve($target);
-  }, []);
+  const { isTop } = useScrollDirection(1000);
 
   const handleMoveTopClick = () =>
     window.scrollTo({ behavior: "smooth", top: 0, left: 0 });
   return (
     <>
-      {visible && (
+      {!isTop && (
         <Container onClick={handleMoveTopClick}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
