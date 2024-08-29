@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { projectList } from "../../constants";
+import { Link } from "react-router-dom";
+import Transition from "../../components/common/Transition";
 
-export default function ProjectPage() {
+function ProjectPage() {
   return (
     <ProjectPageContainer>
       {projectList.map((item) => (
-        <div key={item.id}>
+        <Link to={`/projects/${item.id}`} key={item.id}>
           <img
             style={{ maxWidth: "300px", height: "auto" }}
             src={item.previewImg}
@@ -13,7 +15,7 @@ export default function ProjectPage() {
           />
           <p>{item.title}</p>
           <p>{item.desc}</p>
-        </div>
+        </Link>
       ))}
     </ProjectPageContainer>
   );
@@ -25,3 +27,5 @@ const ProjectPageContainer = styled.div`
   color: white;
   padding-top: 200px;
 `;
+
+export default Transition(ProjectPage);

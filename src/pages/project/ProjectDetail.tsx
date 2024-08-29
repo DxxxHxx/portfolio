@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { projectList } from "../../constants";
 import styled from "styled-components";
+import Transition from "../../components/common/Transition";
 
-export default function ProjectDetail() {
+function ProjectDetail() {
   const { id } = useParams();
   const [project] = projectList.filter((item) => item.id === Number(id));
   return <Container>{project.id}</Container>;
@@ -13,3 +14,5 @@ const Container = styled.div`
   background-color: black;
   color: white;
 `;
+
+export default Transition(ProjectDetail);

@@ -64,6 +64,29 @@ a {
   text-decoration: none;
   outline: none;
 }
+
+.slide-in{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: tomato;
+  transform-origin: bottom;
+  z-index: 99999;
+}
+
+.slide-out{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: tomato;
+  transform-origin: top;
+  z-index: 99999;
+
+}
 `;
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

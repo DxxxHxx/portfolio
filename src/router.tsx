@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/common/Layout";
 import Home from "./pages/Home";
 import ProjectPage from "./pages/project/ProjectPage";
@@ -11,9 +11,10 @@ const routeList = [
   { id: 3, path: "/projects/:id", element: ProjectDetail },
 ];
 export default function Router() {
+  const loc = useLocation();
   return (
-    <AnimatePresence>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={loc} key={loc.key}>
         <Route element={<Layout />}>
           {routeList.map((item) => (
             <Route key={item.id} path={item.path} element={<item.element />} />

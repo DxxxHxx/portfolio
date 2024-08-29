@@ -3,8 +3,9 @@ import About from "../components/about/About";
 import Skills from "../components/skills/Skills";
 import Projects from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
+import Transition from "../components/common/Transition";
 
-export default function Home() {
+function Home() {
   return (
     <>
       <Landing />
@@ -15,3 +16,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Transition(Home);
