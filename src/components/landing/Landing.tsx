@@ -49,6 +49,7 @@ export default function Landing() {
           />
         </svg>
       </ArrowButton>
+      <div className="landing-bg"></div>
     </LandingContainer>
   );
 }
@@ -56,7 +57,6 @@ export default function Landing() {
 const LandingContainer = styled.section`
   width: 100%;
   height: 80vh;
-  background-color: #858180;
   display: flex;
   justify-content: center;
   align-items: center;

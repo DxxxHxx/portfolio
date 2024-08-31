@@ -11,12 +11,12 @@ export default function Contact() {
         </div>
         <ContactInfo>
           <p>donghun1163@gmail.com</p>
-          <p>010-8339-5659</p>
+          <p>010-8339-5650</p>
         </ContactInfo>
       </TextWrapper>
       <ContactInfo>
         <p>donghun1163@gmail.com</p>
-        <p>010-8339-5659</p>
+        <p>010-8339-5650</p>
       </ContactInfo>
 
       <EmailForm />
@@ -26,6 +26,7 @@ export default function Contact() {
 
 const ContactContainer = styled.section`
   width: 100%;
+  min-height: 100vh;
   background-color: whitesmoke;
   padding: 30px 20px;
   display: grid;
@@ -42,6 +43,7 @@ const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* border: 1px solid black; */
 
   > div:nth-child(1) {
     h1 {

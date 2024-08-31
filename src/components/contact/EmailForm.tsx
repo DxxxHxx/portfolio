@@ -84,8 +84,9 @@ export default function EmailForm() {
 const Form = styled.form`
   width: 100%;
   height: auto;
+  /* background-color: tomato; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 50px;
   flex-direction: column;

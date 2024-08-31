@@ -87,6 +87,17 @@ a {
   z-index: 99999;
 
 }
+.landing-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  background-image: radial-gradient(ellipse 80% 80% at 50% -20%,rgba(120,119,198,0.3),rgba(255,255,255,0));
+
+}
 `;
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
