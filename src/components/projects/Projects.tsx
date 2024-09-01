@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import ProjectDetail from "../../pages/project/ProjectDetail";
 
 export default function Projects() {
   return (
@@ -15,8 +16,8 @@ export default function Projects() {
 
       <ImgWrapper>
         {projectList.map((item) => (
-          <Link to={`/projects/${item.id}`} key={item.id}>
-            <motion.div whileHover={{ scale: 1.1 }}>
+          <Link to={`/?projects=${item.id}`} key={item.id}>
+            <motion.div layoutId={item.id + ""} whileHover={{ scale: 1.1 }}>
               <Img src={item.previewImg} alt={`${item.title} img`} />
               <p>
                 {item.title} {item.id}
@@ -25,6 +26,10 @@ export default function Projects() {
           </Link>
         ))}
       </ImgWrapper>
+
+      <AnimatePresence>
+        <ProjectDetail />
+      </AnimatePresence>
     </ProjectContainer>
   );
 }
@@ -68,10 +73,8 @@ const Title = styled.div`
 `;
 
 const ImgWrapper = styled.div`
-  /* border: 1px solid white; */
   flex: 1;
   display: flex;
-  /* justify-content: center; */
   overflow-x: auto;
   align-items: center;
   gap: 20px;
