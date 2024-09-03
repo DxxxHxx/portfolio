@@ -43,8 +43,8 @@ export interface IProjectList {
   readonly Contribution: number;
   readonly projectType: string;
   readonly links: {
-    readonly github: string;
-    readonly deploy: string;
+    readonly github: string | undefined;
+    readonly deploy: string | undefined;
   };
 }
 

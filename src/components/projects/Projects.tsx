@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import ProjectDetail from "../../pages/project/ProjectDetail";
 
 export default function Projects() {
@@ -27,9 +27,7 @@ export default function Projects() {
         ))}
       </ImgWrapper>
 
-      <AnimatePresence>
-        <ProjectDetail />
-      </AnimatePresence>
+      <ProjectDetail />
     </ProjectContainer>
   );
 }
@@ -89,11 +87,13 @@ const ImgWrapper = styled.div`
   }
 `;
 const Img = styled.img`
-  width: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 10px;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 300px;
+    width: 350px;
+    height: 350px;
   }
 `;
