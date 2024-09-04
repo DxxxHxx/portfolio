@@ -123,6 +123,10 @@ const MsgContainer = styled.div`
     font-size: 18px;
     padding: 10px 0px;
     resize: none;
+    &:hover,
+    &:focus {
+      border-color: blue;
+    }
   }
 `;
 

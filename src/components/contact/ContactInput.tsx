@@ -71,7 +71,8 @@ const InputContainer = styled.div<{ $pass: boolean | null }>`
     padding: 10px;
     font-size: 18px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: blue;
     }
   }
