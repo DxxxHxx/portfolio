@@ -1,41 +1,38 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { Link, useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
 import { useCloseModal } from "../../util/useCloseModal";
 
-export default function ProjectDetail() {
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get("projects");
-
-  const [project] = projectList.filter((item) => item.id === parseInt(id!, 10));
+export default function ProjectDetail({ id }: { id: string }) {
+  const project = projectList.find((item) => item.id === parseInt(id));
 
   useCloseModal(!!id);
   return (
-    <AnimatePresence>
-      {id && (
-        <ModalBg
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.7 } }}
-          exit={{ opacity: 0, transition: { duration: 0.7 } }}
-        >
-          <Modal layoutId={id}>
-            <ClosButton to={"/"}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
-              </svg>
-            </ClosButton>
+    <ModalBg
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.7 } }}
+      exit={{ opacity: 0, transition: { duration: 0.7 } }}
+    >
+      <Modal layoutId={id}>
+        <ClosButton to={"/"}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </ClosButton>
+        {project ? (
+          <>
             <img src={project.previewImg} alt="" />
 
             <div className="info-container">
@@ -92,10 +89,12 @@ export default function ProjectDetail() {
             <div className="desc-container">
               <p>{project.desc}</p>
             </div>
-          </Modal>
-        </ModalBg>
-      )}
-    </AnimatePresence>
+          </>
+        ) : (
+          <NotFoundText>Not Found</NotFoundText>
+        )}
+      </Modal>
+    </ModalBg>
   );
 }
 
@@ -208,4 +207,12 @@ const ClosButton = styled(Link)`
     height: 40px;
   }
   z-index: 100;
+`;
+
+const NotFoundText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
 `;

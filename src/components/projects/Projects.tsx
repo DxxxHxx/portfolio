@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ProjectDetail from "../../pages/project/ProjectDetail";
 
 export default function Projects() {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("projects");
   return (
     <ProjectContainer id="projects">
       <Title>
@@ -27,7 +29,7 @@ export default function Projects() {
         ))}
       </ImgWrapper>
 
-      <ProjectDetail />
+      <AnimatePresence>{id && <ProjectDetail id={id} />}</AnimatePresence>
     </ProjectContainer>
   );
 }
