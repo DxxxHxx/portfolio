@@ -27,7 +27,8 @@ export default function About() {
         </p>
       </TextContainer>
       <ProfileImg
-        src="https://item.kakaocdn.net/do/e74bc01f60f5ce6a015cec451ea9cc45effd194bae87d73dd00522794070855d"
+        style={{ border: " 1px solid black" }}
+        src=""
         alt="profile img"
       />
     </AboutContainer>
