@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 export interface IMenuList {
   readonly id: number;
@@ -59,4 +59,17 @@ export interface IConactInput {
   value: string;
   name: string;
   onChange: (e: InputChangeEventType) => void;
+}
+
+export interface ISkillsList {
+  id: number;
+  name: string;
+  desc: string[];
+}
+
+export type OpenedIndexType = null | number;
+
+export interface IAccordionProps extends ISkillsList {
+  openedIndex: OpenedIndexType;
+  setOpenedIndex: Dispatch<SetStateAction<OpenedIndexType>>;
 }

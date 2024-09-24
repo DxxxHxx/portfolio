@@ -1,68 +1,45 @@
 import styled from "styled-components";
 import { skillsList } from "../../constants";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import Accordion from "./accordion/Accordion";
+import { OpenedIndexType } from "../../types/interface";
 
 export default function Skills() {
+  const [openedIndex, setOpenedIndex] = useState<OpenedIndexType>(null);
   return (
     <Container id="skills">
       <h1>Skills</h1>
-
-      <MainList>
-        {skillsList.map((item) => (
-          <SubList
-            initial={{ x: item.id % 2 !== 0 ? -200 : 200, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1, transition: { duration: 1.2 } }}
-            key={item.id}
-          >
-            <h3>{item.name}</h3>
-            {item.desc.map((desc) => (
-              <li key={desc}>{desc}</li>
-            ))}
-          </SubList>
+      <AccordionWrapper>
+        {skillsList.map((skill) => (
+          <Accordion
+            {...skill}
+            key={skill.id}
+            openedIndex={openedIndex}
+            setOpenedIndex={setOpenedIndex}
+          />
         ))}
-      </MainList>
+      </AccordionWrapper>
     </Container>
   );
 }
-const Container = styled.section`
+
+const Container = styled(motion.section)`
+  padding: 20px;
   width: 100%;
   height: 100vh;
-  padding: 20px;
   background-color: aliceblue;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-
-  h1 {
-    font-size: 30px;
-    margin-bottom: 50px;
+  > h1 {
+    font-size: 25px;
+    margin-bottom: 100px;
   }
 `;
 
-const MainList = styled.div`
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
-  gap: 20px;
+const AccordionWrapper = styled.div`
+  width: 100%;
+  margin: auto;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-`;
-const SubList = styled(motion.ul)`
-  border: 1px solid gray;
-  border-radius: 10px;
-  padding: 10px;
-
-  h3 {
-    margin-bottom: 15px;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  li {
-    list-style: inside;
-    margin-bottom: 10px;
+    width: 80%;
   }
 `;
