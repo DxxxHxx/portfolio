@@ -11,15 +11,12 @@ export default function Projects() {
     <ProjectContainer id="projects">
       <Title>
         <h1>Projects</h1>
-        <Link to={"/projects"}>
-          <button>View all</button>
-        </Link>
       </Title>
 
       <ImgWrapper>
         {projectList.map((item) => (
           <Link to={`/?projects=${item.id}`} key={item.id}>
-            <motion.div layoutId={item.id + ""} whileHover={{ scale: 1.1 }}>
+            <motion.div layoutId={item.id + ""} whileHover={{ y: -20 }}>
               <Img src={item.previewImg} alt={`${item.title} img`} />
               <p>
                 {item.title} {item.id}
@@ -53,22 +50,6 @@ const Title = styled.div`
   margin-bottom: 25px;
   h1 {
     font-size: 25px;
-  }
-
-  button {
-    background-color: transparent;
-    border-radius: 20px;
-    color: white;
-    border: 1px solid white;
-    padding: 7px 15px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: white;
-      color: black;
-    }
-
-    transition: all 0.2s ease-in-out;
   }
 `;
 
