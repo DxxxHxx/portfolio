@@ -70,11 +70,27 @@ const Container = styled(motion.div)`
     margin-bottom: 20px;
     cursor: pointer;
     span {
-      font-size: 25px;
+      font-size: 18px;
     }
     svg {
       width: 30px;
       height: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+      span {
+        font-size: 25px;
+      }
+    }
+  }
+
+  section > p {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
     }
   }
 `;

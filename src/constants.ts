@@ -1,6 +1,8 @@
 import {
+  IIconList,
   IInfoList,
   ILinkList,
+  IMainSkillList,
   IMenuList,
   IProjectList,
   ISkillList,
@@ -9,6 +11,13 @@ import githubLogo from "./assets/github-mark.png";
 import blogLogo from "./assets/blogLogo.png";
 import todaysDiscovery from "./assets/projectThumbnail/오늘의 발견.png";
 import { splitText } from "./util/splitText";
+import styledComponentsLogo from "./assets/skillLogo/styled-components.png";
+import twLogo from "./assets/skillLogo/twlogo.svg";
+import reduxLogo from "./assets/skillLogo/redux.svg";
+import recoilLogo from "./assets/skillLogo/recoil.svg";
+import zustandLogo from "./assets/skillLogo/zustand.png";
+import reactQueryLogo from "./assets/skillLogo/reactQuery.png";
+import framerMotionLogo from "./assets/skillLogo/framer-motion.png";
 
 export const infoList: IInfoList[] = [
   { id: 1, emoji: "🙋‍♂️", text: "이동훈" },
@@ -161,4 +170,49 @@ export const menuList: IMenuList[] = [
   { id: 2, category: "Skills" },
   { id: 3, category: "Projects" },
   { id: 4, category: "Contact" },
+];
+
+export const mainSkillList: IMainSkillList[] = [
+  {
+    id: 1,
+    name: "HTML/CSS",
+    desc: [
+      "웹표준을 지키려 노력합니다",
+      "styled-component, tailwindcss를 활용할 수 있습니다.",
+    ],
+  },
+  {
+    id: 2,
+    name: "Javascript",
+    desc: [
+      "ES6+ 문법에 익숙합니다.",
+      "webpack, parcel 등의 번들러 사용 경험이 있습니다.",
+    ],
+  },
+  {
+    id: 3,
+    name: "Typescript",
+    desc: [
+      "웹표준을 지키려 노력합니다",
+      "styled-component, tailwindcss를 활용할 수 있습니다.",
+    ],
+  },
+  {
+    id: 4,
+    name: "React",
+    desc: [
+      "Zustands,Recoil,React-query등 상태관리 라이브러리 사용 경험이 있습니다.",
+    ],
+  },
+];
+
+export const subSkillList: IIconList[] = [
+  { id: 1, logo: styledComponentsLogo },
+  { id: 2, logo: twLogo },
+  { id: 3, logo: reduxLogo },
+  { id: 4, logo: recoilLogo },
+  { id: 5, logo: zustandLogo },
+  { id: 6, logo: reactQueryLogo },
+  { id: 7, logo: githubLogo },
+  { id: 8, logo: framerMotionLogo },
 ];

@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { skillsList } from "../../constants";
+import { mainSkillList, subSkillList } from "../../constants";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Accordion from "./accordion/Accordion";
 import { OpenedIndexType } from "../../types/interface";
+import Slider from "./slider/Slider";
 
 export default function Skills() {
   const [openedIndex, setOpenedIndex] = useState<OpenedIndexType>(null);
@@ -11,7 +12,7 @@ export default function Skills() {
     <Container id="skills">
       <h1>Skills</h1>
       <AccordionWrapper>
-        {skillsList.map((skill) => (
+        {mainSkillList.map((skill) => (
           <Accordion
             {...skill}
             key={skill.id}
@@ -20,6 +21,7 @@ export default function Skills() {
           />
         ))}
       </AccordionWrapper>
+      <Slider iconList={subSkillList} />
     </Container>
   );
 }
@@ -27,11 +29,16 @@ export default function Skills() {
 const Container = styled(motion.section)`
   padding: 20px;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: aliceblue;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   > h1 {
     font-size: 25px;
-    margin-bottom: 100px;
+    /* margin-bottom: 10px; */
   }
 `;
 

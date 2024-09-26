@@ -61,7 +61,7 @@ export interface IConactInput {
   onChange: (e: InputChangeEventType) => void;
 }
 
-export interface ISkillsList {
+export interface IMainSkillList {
   id: number;
   name: string;
   desc: string[];
@@ -69,7 +69,12 @@ export interface ISkillsList {
 
 export type OpenedIndexType = null | number;
 
-export interface IAccordionProps extends ISkillsList {
+export interface IAccordionProps extends IMainSkillList {
   openedIndex: OpenedIndexType;
   setOpenedIndex: Dispatch<SetStateAction<OpenedIndexType>>;
+}
+
+export interface IIconList {
+  id: number;
+  logo: string;
 }
