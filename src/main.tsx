@@ -32,6 +32,7 @@ section {
 body {
   line-height: 1;
   font-family: "Noto Sans KR", sans-serif;
+  overflow-x: hidden;
   /* height: 300vh; */
   /* background-color: #f3f3f3; */
   /* padding: 0px 10px;

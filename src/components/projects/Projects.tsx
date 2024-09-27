@@ -1,19 +1,31 @@
 import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import ProjectDetail from "../../pages/project/ProjectDetail";
+import { useRef } from "react";
 
 export default function Projects() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("projects");
+
+  const ref = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({ target: ref });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
   return (
-    <ProjectContainer id="projects">
+    <ProjectContainer ref={ref} id="projects">
       <Title>
         <h1>Projects</h1>
       </Title>
 
-      <ImgWrapper>
+      <ImgWrapper style={{ x }}>
         {projectList.map((item) => (
           <Link to={`/?projects=${item.id}`} key={item.id}>
             <motion.div layoutId={item.id + ""} whileHover={{ y: -20 }}>
@@ -33,33 +45,38 @@ export default function Projects() {
 
 const ProjectContainer = styled.section`
   width: 100%;
-  min-height: 100vh;
+  height: 150vh;
+  /* overflow-x: hidden; */
   background-color: black;
   color: white;
-  padding: 20px;
+  /* padding: 0 20px; */
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const Title = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid white;
-  padding-bottom: 25px;
-  margin-bottom: 25px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: black;
   h1 {
     font-size: 25px;
+    padding: 20px;
   }
 `;
 
-const ImgWrapper = styled.div`
-  flex: 1;
+const ImgWrapper = styled(motion.div)`
   display: flex;
-  overflow-x: auto;
   align-items: center;
-  gap: 20px;
-  padding: 0px 20px;
+  gap: 30px;
+  position: sticky;
+  top: 100px;
+  left: 0;
+  padding: 20px;
+  margin-top: 25px;
 
   div {
     cursor: pointer;
