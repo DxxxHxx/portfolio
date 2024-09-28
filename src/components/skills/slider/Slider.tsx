@@ -3,11 +3,19 @@ import { motion } from "framer-motion";
 import { IIconList } from "../../../types/interface";
 
 export default function Slider({ iconList }: { iconList: IIconList[] }) {
-  const duplicateArr = [...iconList, ...iconList];
+  const duplicateArr = [...iconList, ...iconList].map((item, index) => ({
+    ...item,
+    id: index,
+  }));
   return (
     <SilderContainer>
       <h2>이외에 자주 사용하는 기술들입니다 :)</h2>
       <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: 1,
+          transition: { delay: 0.1 },
+        }}
         animate={{
           x: ["-100%", "0%"],
           transition: {
