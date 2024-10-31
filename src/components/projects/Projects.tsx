@@ -9,6 +9,7 @@ import {
 import { Link, useSearchParams } from "react-router-dom";
 import ProjectDetail from "../../pages/project/ProjectDetail";
 import { useRef } from "react";
+import ProjectImg from "./ProjectImg";
 
 export default function Projects() {
   const [searchParams] = useSearchParams();
@@ -31,11 +32,7 @@ export default function Projects() {
         {projectList.map((item) => (
           <Link to={`/?projects=${item.id}`} key={item.id}>
             <motion.div layoutId={item.id + ""} whileHover={{ y: -20 }}>
-              <ProjectImg>
-                <source srcSet={item.previewImg.webp} type="image/webp" />
-                <source srcSet={item.previewImg.png} type="image/png" />
-                <img src={item.previewImg.png} alt={`${item.title} image`} />
-              </ProjectImg>
+              <ProjectImg previewImg={item.previewImg} title={item.title} />
               <p>{item.title}</p>
             </motion.div>
           </Link>
@@ -72,14 +69,4 @@ const Content = styled(motion.div)`
   margin: 15vh 0px;
   display: inline-flex;
   gap: 50px;
-`;
-
-const ProjectImg = styled.picture`
-  img,
-  source {
-    width: 400px;
-    height: 400px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
 `;

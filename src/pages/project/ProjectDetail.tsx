@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
 import { useCloseModal } from "../../util/useCloseModal";
+// import ProjectImg from "../../components/projects/ProjectImg";
 
 export default function ProjectDetail({ id }: { id: string }) {
   const project = projectList.find((item) => item.id === parseInt(id));
@@ -33,7 +34,8 @@ export default function ProjectDetail({ id }: { id: string }) {
         </ClosButton>
         {project ? (
           <>
-            <img src={project.previewImg} alt="" />
+            {/* <ProjectImg previewImg={project.previewImg} title={project.title} /> */}
+            <div style={{ border: "1px solid black" }}></div>
 
             <div className="info-container">
               <h1>{project.title}</h1>
