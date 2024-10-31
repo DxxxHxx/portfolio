@@ -1,4 +1,3 @@
-import { Link, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
 import {
@@ -7,6 +6,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { Link, useSearchParams } from "react-router-dom";
 import ProjectDetail from "../../pages/project/ProjectDetail";
 import { useRef } from "react";
 
@@ -18,82 +18,68 @@ export default function Projects() {
 
   const { scrollYProgress } = useScroll({ target: ref });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
-  return (
-    <ProjectContainer ref={ref} id="projects">
-      <Title>
-        <h1>Projects</h1>
-      </Title>
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", `-95%`]);
 
-      <ImgWrapper style={{ x }}>
+  const marginBottom = useTransform(scrollYProgress, [0, 1], ["10vh", "100vh"]);
+
+  return (
+    <Container ref={ref} id="projects">
+      <Title style={{ marginBottom }}>
+        <h1>projects</h1>
+      </Title>
+      <Content style={{ x }}>
         {projectList.map((item) => (
           <Link to={`/?projects=${item.id}`} key={item.id}>
             <motion.div layoutId={item.id + ""} whileHover={{ y: -20 }}>
-              <Img src={item.previewImg} alt={`${item.title} img`} />
-              <p>
-                {item.title} {item.id}
-              </p>
+              <ProjectImg>
+                <source srcSet={item.previewImg.webp} type="image/webp" />
+                <source srcSet={item.previewImg.png} type="image/png" />
+                <img src={item.previewImg.png} alt={`${item.title} image`} />
+              </ProjectImg>
+              <p>{item.title}</p>
             </motion.div>
           </Link>
         ))}
-      </ImgWrapper>
-
+      </Content>
       <AnimatePresence>{id && <ProjectDetail id={id} />}</AnimatePresence>
-    </ProjectContainer>
+    </Container>
   );
 }
 
-const ProjectContainer = styled.section`
+const Container = styled.section`
   width: 100%;
-  height: 150vh;
-  /* overflow-x: hidden; */
+  height: 400vh;
   background-color: black;
   color: white;
-  /* padding: 0 20px; */
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  padding: 20px;
 `;
 
-const Title = styled.div`
-  border-bottom: 1px solid white;
+const Title = styled(motion.div)`
   position: sticky;
-  top: 0;
+  top: 20px;
   left: 0;
-  z-index: 50;
-  background-color: black;
+  border-bottom: 2px solid white;
   h1 {
     font-size: 25px;
-    padding: 20px;
+    padding-bottom: 20px;
   }
 `;
 
-const ImgWrapper = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  gap: 30px;
+const Content = styled(motion.div)`
   position: sticky;
-  top: 100px;
+  top: 25%;
   left: 0;
-  padding: 20px;
-  margin-top: 25px;
-
-  div {
-    cursor: pointer;
-  }
-
-  p {
-    font-size: 18px;
-  }
+  margin: 15vh 0px;
+  display: inline-flex;
+  gap: 50px;
 `;
-const Img = styled.img`
-  width: 220px;
-  height: 220px;
-  border-radius: 10px;
-  margin-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
-    width: 350px;
-    height: 350px;
+const ProjectImg = styled.picture`
+  img,
+  source {
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    margin-bottom: 20px;
   }
 `;

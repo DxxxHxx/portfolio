@@ -36,7 +36,10 @@ export interface IUseInput {
 export interface IProjectList {
   readonly id: number;
   readonly title: string;
-  readonly previewImg: string;
+  readonly previewImg: {
+    readonly png: string;
+    readonly webp: string;
+  };
   readonly desc: string;
   readonly period: string;
   readonly tech: string[];

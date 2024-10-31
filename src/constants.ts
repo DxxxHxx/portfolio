@@ -9,7 +9,16 @@ import {
 } from "./types/interface";
 import githubLogo from "./assets/github-mark.png";
 import blogLogo from "./assets/blogLogo.png";
-import todaysDiscovery from "./assets/projectThumbnail/오늘의 발견.png";
+import todaysDiscoveryPng from "./assets/projectThumbnail/png/오늘의-발견.png";
+import categoryBestPng from "./assets/projectThumbnail/png/카테고리베스트.png";
+import coupangHeaderPng from "./assets/projectThumbnail/png/쿠팡헤더.png";
+import buildUpPng from "./assets/projectThumbnail/png/빌드업.png";
+import goodsPng from "./assets/projectThumbnail/png/굿즈.png";
+import todaysDiscoveryWebp from "./assets/projectThumbnail/webp/오늘의-발견.webp";
+import categoryBestWebp from "./assets/projectThumbnail/webp/카테고리베스트.webp";
+import coupangHeaderWebp from "./assets/projectThumbnail/webp/쿠팡헤더.webp";
+import buildUpWebp from "./assets/projectThumbnail/webp/빌드업.webp";
+import goodsWebp from "./assets/projectThumbnail/webp/굿즈.webp";
 import { splitText } from "./util/splitText";
 import styledComponentsLogo from "./assets/skillLogo/styled-components.png";
 import twLogo from "./assets/skillLogo/twlogo.svg";
@@ -68,66 +77,82 @@ export const projectList: IProjectList[] = [
       deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
     },
     tech: ["HTML", "CSS"],
-    title: "오늘의 발견",
+    title: "오늘의 발견 (UI)",
     period: "23.09.07 ~ 23.09.11",
-    previewImg: todaysDiscovery,
-    projectType: "personal",
+    previewImg: { png: todaysDiscoveryPng, webp: todaysDiscoveryWebp },
+    projectType: "개인프로젝트",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
   {
     id: 2,
     Contribution: 100,
     links: {
-      github: "https://github.com/DxxxHxx/Today-s-discovery",
-      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+      github: "https://github.com/DxxxHxx/Coupang-Category-Best",
+      deploy: "https://dxxxhxx.github.io/Coupang-Category-Best/",
     },
     tech: ["HTML", "CSS"],
-    title: "오늘의 발견",
-    period: "23.09.07 ~ 23.09.11",
-    previewImg: todaysDiscovery,
-    projectType: "personal",
+    title: "카테고리 베스트 (UI)",
+    period: "23.09.22 ~ 23.09.27",
+    previewImg: { png: categoryBestPng, webp: categoryBestWebp },
+    projectType: "개인프로젝트",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
   {
     id: 3,
     Contribution: 100,
     links: {
-      github: "https://github.com/DxxxHxx/Today-s-discovery",
-      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+      github: "https://github.com/DxxxHxx/Coupang-Header",
+      deploy: "https://dxxxhxx.github.io/Coupang-Header/",
     },
     tech: ["HTML", "CSS"],
-    title: "오늘의 발견",
-    period: "23.09.07 ~ 23.09.11",
-    previewImg: todaysDiscovery,
-    projectType: "personal",
+    title: "쿠팡 헤더 (UI)",
+    period: "23.09.29 ~ 23.10.04",
+    previewImg: { png: coupangHeaderPng, webp: coupangHeaderWebp },
+    projectType: "개인프로젝트",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
   {
     id: 4,
     Contribution: 100,
     links: {
-      github: "https://github.com/DxxxHxx/Today-s-discovery",
-      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+      github: "https://github.com/DxxxHxx/build-up",
+      deploy: "https://build-up-4925c.web.app/free",
     },
-    tech: ["HTML", "CSS"],
-    title: "오늘의 발견",
-    period: "23.09.07 ~ 23.09.11",
-    previewImg: todaysDiscovery,
-    projectType: "personal",
+    tech: [
+      "Javascript",
+      "React",
+      "Typescript",
+      "Tailwind-CSS",
+      "Recoil",
+      "Firebase",
+    ],
+    title: "build-up (축구 커뮤니티)",
+    period: "24.01 ~ 24.02 (약 5주)",
+    previewImg: { png: buildUpPng, webp: buildUpWebp },
+    projectType: "개인프로젝트",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
   {
     id: 5,
-    Contribution: 100,
+    Contribution: 50,
     links: {
-      github: "https://github.com/DxxxHxx/Today-s-discovery",
-      deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
+      github: "https://github.com/2024TeamUnity/Goods_FE",
+      deploy: "https://goods-trade.vercel.app/",
     },
-    tech: ["HTML", "CSS"],
-    title: "오늘의 발견",
-    period: "23.09.07 ~ 23.09.11",
-    previewImg: todaysDiscovery,
-    projectType: "personal",
+    tech: [
+      "Javascript",
+      "React",
+      "Typescript",
+      "Tailwind-CSS",
+      "Recoil",
+      "React-Query",
+      "STOMP",
+      "MSW",
+    ],
+    title: "Goods (중고거래 서비스)",
+    period: "24.04 ~ 23.06 (약 6주)",
+    previewImg: { png: goodsPng, webp: goodsWebp },
+    projectType: "팀 프로젝트 (총 인원 5, 백엔드 2, 프론트엔드 3)",
     desc: "쿠팡 웹페이지의 <오늘의 발견> 영역을 마크업한 결과물입니다.",
   },
 ];
@@ -177,8 +202,9 @@ export const mainSkillList: IMainSkillList[] = [
     id: 1,
     name: "HTML/CSS",
     desc: [
-      "웹표준을 지키려 노력합니다",
+      "웹표준을 지키려 노력합니다.",
       "styled-component, tailwindcss를 활용할 수 있습니다.",
+      "반응형 디자인을 구현 할 수 있습니다.",
     ],
   },
   {
@@ -186,22 +212,18 @@ export const mainSkillList: IMainSkillList[] = [
     name: "Javascript",
     desc: [
       "ES6+ 문법에 익숙합니다.",
-      "webpack, parcel 등의 번들러 사용 경험이 있습니다.",
+      "JS엔진, 브라우저의 동작원리에 대해 이해하고 있습니다.",
+      "Typescript를 사용 할 수 있습니다.",
     ],
   },
+
   {
     id: 3,
-    name: "Typescript",
-    desc: [
-      "웹표준을 지키려 노력합니다",
-      "styled-component, tailwindcss를 활용할 수 있습니다.",
-    ],
-  },
-  {
-    id: 4,
     name: "React",
     desc: [
       "Zustands,Recoil,React-query등 상태관리 라이브러리 사용 경험이 있습니다.",
+      "성능 개선 경험이 있습니다.",
+      "재사용성을 고려한 컴포넌트를 작성하려 노력합니다.",
     ],
   },
 ];
