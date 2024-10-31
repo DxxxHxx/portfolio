@@ -33,6 +33,7 @@ export default function Landing() {
           transition: { duration: 1.5, repeat: Infinity },
         }}
         whileHover={{ scale: 1.2 }}
+        aria-label="move-about-section-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

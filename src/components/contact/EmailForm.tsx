@@ -76,7 +76,7 @@ export default function EmailForm() {
           required
         />
       </MsgContainer>
-      <SendButton>보내기</SendButton>
+      <SendButton aria-label="send-email-button">보내기</SendButton>
     </Form>
   );
 }
