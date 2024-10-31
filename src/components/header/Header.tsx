@@ -3,17 +3,15 @@ import styled from "styled-components";
 import { useScrollDirection } from "../../util/useScrollDirection";
 import { useState, MouseEvent } from "react";
 import { menuList } from "../../constants";
-import { Link, useMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { isTop, scrollDirection } = useScrollDirection();
-  const projectMatch = useMatch("/projects");
 
   const handleSidebarToggle = () => setIsOpen((prev) => !prev);
 
   const handleNavigateSection = (e: MouseEvent<HTMLLIElement>) => {
-    // 현재 위치가 홈일 때.
     const $target = document.querySelector(
       `#${e.currentTarget.innerText.toLowerCase()}`
     );
@@ -28,14 +26,10 @@ export default function Header() {
     <HeaderContainer
       animate={{
         top: scrollDirection === "down" ? -100 : 0,
-        backgroundColor: isTop
-          ? "transparent"
-          : projectMatch
-          ? "black"
-          : "white",
+        backgroundColor: isTop ? "transparent" : "white",
         transition: { duration: 0.3 },
       }}
-      $isProjectPage={!!projectMatch}
+      $isTop={isTop}
     >
       <HeaderLogo to={"/"}>DxxxHxx</HeaderLogo>
 
@@ -52,8 +46,8 @@ export default function Header() {
       </HeaderMenu>
 
       <MobileMenuBtn
+        aria-label="open-menu-button"
         onClick={handleSidebarToggle}
-        $isProjectPage={!!projectMatch}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +100,7 @@ export default function Header() {
   );
 }
 
-const HeaderContainer = styled(motion.header)<{ $isProjectPage: boolean }>`
+const HeaderContainer = styled(motion.header)<{ $isTop: boolean }>`
   width: 100%;
   height: 90px;
   padding: 0px 20px;
@@ -116,7 +110,11 @@ const HeaderContainer = styled(motion.header)<{ $isProjectPage: boolean }>`
   align-items: center;
   justify-content: space-between;
   z-index: 999;
-  color: ${(p) => (p.$isProjectPage ? "white" : "black")};
+  color: "black";
+  box-shadow: ${(p) =>
+    p.$isTop
+      ? ""
+      : "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"};
 `;
 
 const HeaderLogo = styled(Link)`
@@ -149,7 +147,7 @@ const HeaderMenuItem = styled(motion.li)`
   }
 `;
 
-const MobileMenuBtn = styled.button<{ $isProjectPage: boolean }>`
+const MobileMenuBtn = styled.button`
   display: block;
   border: none;
   background-color: transparent;
@@ -158,7 +156,7 @@ const MobileMenuBtn = styled.button<{ $isProjectPage: boolean }>`
   svg {
     width: 45px;
     height: 45px;
-    color: ${(p) => (p.$isProjectPage ? "white" : "black")};
+    color: "black";
   }
   @media screen and (min-width: 768px) {
     display: none;
