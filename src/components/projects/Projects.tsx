@@ -49,6 +49,7 @@ const Container = styled.section`
   background-color: black;
   color: white;
   padding: 20px;
+  overflow: clip;
 `;
 
 const Title = styled(motion.div)`
