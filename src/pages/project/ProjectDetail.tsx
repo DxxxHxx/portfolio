@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { projectList } from "../../constants";
 import { useCloseModal } from "../../util/useCloseModal";
-// import ProjectImg from "../../components/projects/ProjectImg";
+import ProjectImg from "../../components/projects/ProjectImg";
 
 export default function ProjectDetail({ id }: { id: string }) {
   const project = projectList.find((item) => item.id === parseInt(id));
@@ -34,13 +34,16 @@ export default function ProjectDetail({ id }: { id: string }) {
         </ClosButton>
         {project ? (
           <>
-            {/* <ProjectImg previewImg={project.previewImg} title={project.title} /> */}
-            <div style={{ border: "1px solid black" }}></div>
+            <ProjectImg
+              previewImg={project.previewImg}
+              title={project.title}
+              isDetail
+            />
 
             <div className="info-container">
               <h1>{project.title}</h1>
 
-              <p>기여도 : {project.Contribution} %</p>
+              <p>기여도 : {project.contribution} %</p>
               <p>기간 : {project.period}</p>
               <p>프로젝트 유형 : {project.projectType}</p>
               <ul>
@@ -130,13 +133,13 @@ const Modal = styled(motion.div)`
   }
 
   .info-container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     row-gap: 30px;
     margin: 30px 0px;
+    padding: 0px 10px;
     h1 {
       font-size: 25px;
       font-weight: bold;
@@ -204,9 +207,17 @@ const ClosButton = styled(Link)`
   position: absolute;
   top: 10px;
   right: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
   svg {
     width: 40px;
     height: 40px;
+  }
+  &:hover {
+    color: tomato;
+    transition: all 0.2s ease-in-out;
   }
   z-index: 100;
 `;

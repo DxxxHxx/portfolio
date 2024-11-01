@@ -1,21 +1,28 @@
-import { IProjectList } from "../../types/interface";
+import { IProjectImg } from "../../types/interface";
 
 export default function ProjectImg({
   previewImg,
   title,
-}: Pick<IProjectList, "previewImg" | "title">) {
+  isDetail = false,
+}: IProjectImg) {
+  const imgSize = isDetail ? "100%" : "400px";
+  const imgStyle = {
+    width: imgSize,
+    height: imgSize,
+    borderRadius: "10px",
+    marginBottom: "20px",
+  };
+
   return (
     <picture>
-      <source style={imgStyle} srcSet={previewImg.webp} type="image/webp" />
-      <source style={imgStyle} srcSet={previewImg.png} type="image/png" />
-      <img style={imgStyle} src={previewImg.png} alt={`${title} image`} />
+      <source srcSet={previewImg.webp} type="image/webp" />
+      <source srcSet={previewImg.png} type="image/png" />
+      <img
+        loading="lazy"
+        style={imgStyle}
+        src={previewImg.png}
+        alt={`${title} image`}
+      />
     </picture>
   );
 }
-
-const imgStyle = {
-  width: "400px",
-  height: "400px",
-  borderRadius: "10px",
-  marginBottom: "20px",
-};

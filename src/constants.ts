@@ -71,7 +71,7 @@ export const skillList: ISkillList[] = [
 export const projectList: IProjectList[] = [
   {
     id: 1,
-    Contribution: 100,
+    contribution: 100,
     links: {
       github: "https://github.com/DxxxHxx/Today-s-discovery",
       deploy: "https://dxxxhxx.github.io/Today-s-discovery/",
@@ -85,7 +85,7 @@ export const projectList: IProjectList[] = [
   },
   {
     id: 2,
-    Contribution: 100,
+    contribution: 100,
     links: {
       github: "https://github.com/DxxxHxx/Coupang-Category-Best",
       deploy: "https://dxxxhxx.github.io/Coupang-Category-Best/",
@@ -99,7 +99,7 @@ export const projectList: IProjectList[] = [
   },
   {
     id: 3,
-    Contribution: 100,
+    contribution: 100,
     links: {
       github: "https://github.com/DxxxHxx/Coupang-Header",
       deploy: "https://dxxxhxx.github.io/Coupang-Header/",
@@ -113,7 +113,7 @@ export const projectList: IProjectList[] = [
   },
   {
     id: 4,
-    Contribution: 100,
+    contribution: 100,
     links: {
       github: "https://github.com/DxxxHxx/build-up",
       deploy: "https://build-up-4925c.web.app/free",
@@ -134,7 +134,7 @@ export const projectList: IProjectList[] = [
   },
   {
     id: 5,
-    Contribution: 50,
+    contribution: 50,
     links: {
       github: "https://github.com/2024TeamUnity/Goods_FE",
       deploy: "https://goods-trade.vercel.app/",

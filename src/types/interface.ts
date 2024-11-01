@@ -43,7 +43,7 @@ export interface IProjectList {
   readonly desc: string;
   readonly period: string;
   readonly tech: string[];
-  readonly Contribution: number;
+  readonly contribution: number;
   readonly projectType: string;
   readonly links: {
     readonly github: string | undefined;
@@ -80,4 +80,9 @@ export interface IAccordionProps extends IMainSkillList {
 export interface IIconList {
   id: number;
   logo: string;
+}
+
+export interface IProjectImg
+  extends Pick<IProjectList, "previewImg" | "title"> {
+  isDetail?: boolean;
 }
